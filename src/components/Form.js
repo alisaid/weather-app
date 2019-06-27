@@ -4,8 +4,8 @@ const Form = props => (
   <form onSubmit={props.getForecast}>
     <input type="text" name="city" placeholder="City" />
     <input type="text" name="country" placeholder="Country" />
-    <div class="spinner-border" role="status">
-      <span class="sr-only">
+    <div role="status">
+      <span>
         <button>Get Forecast</button>
       </span>
     </div>
@@ -13,5 +13,3 @@ const Form = props => (
 );
 
 export default Form;
-
-// citySelection !!

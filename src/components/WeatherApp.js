@@ -6,14 +6,19 @@ import Details from "./Details";
 const Api_key = "ed89f6fe37812395b00cb5cf80fe3c64";
 
 export default class WeatherApp extends React.Component {
-  state = {
-    temperature: undefined,
-    city: undefined,
-    country: undefined,
-    humidity: undefined,
-    description: undefined,
-    error: undefined
-  };
+  constructor(props) {
+    super(props);
+    this.getWeather = this.getWeather.bind(this);
+    this.state = {
+      temperature: undefined,
+      city: undefined,
+      country: undefined,
+      humidity: undefined,
+      description: undefined,
+      error: undefined,
+      likedCityNames: []
+    };
+  }
 
   getWeather = async e => {
     e.preventDefault();
@@ -42,6 +47,21 @@ export default class WeatherApp extends React.Component {
     }
   };
 
+  handleLikeButtonClick = event => {
+    const city = this.state.city;
+    if (this.state.likedCityNames.findIndex(c => c === city) > -1) {
+      this.setState(prevState => ({
+        likedCityNames: prevState.likedCityNames.filter(
+          likedCityNames => likedCityNames !== city
+        )
+      }));
+    } else {
+      this.setState(prevState => ({
+        likedCityNames: prevState.likedCityNames.concat(city)
+      }));
+    }
+  };
+
   render() {
     return (
       <div>
@@ -50,7 +70,7 @@ export default class WeatherApp extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="description">
-                  <Description />
+                  <Description likedCityName={this.state.likedCityNames} />
                 </div>
                 <div className="form-container">
                   <Form getForecast={this.getWeather} />
@@ -61,6 +81,7 @@ export default class WeatherApp extends React.Component {
                     humidity={this.state.humidity}
                     description={this.state.description}
                     error={this.state.error}
+                    handleLikeButtonClick={this.handleLikeButtonClick}
                   />
                 </div>
               </div>

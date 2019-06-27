@@ -42,7 +42,7 @@ body {
   background-color: #001f3f;
   height: 90vh;
   width: 55%;
-  padding-top: 100px;
+  padding-top: 40px;
   padding-left: 50px;
 }
 
@@ -88,6 +88,8 @@ button:active {
 .weather__value {
   color: #fff;
   font-weight: 200;
+  display: flex;
+  justify-content: space-between;
 }
 
 .weather__error {
@@ -95,4 +97,45 @@ button:active {
   font-size: 20px;
   letter-spacing: 1px;
   font-weight: 200;
+}
+
+.like-button {
+  color: #fff;
+  background-color: #001f3f;
+  border: none;
+  outline: none;
+  padding: 0px 5px 0px 5px;
+  margin-right: 30px;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #001f3f;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+:-moz-any-link:focus {
+  outline: none;
+}
+
+*:focus,
+*:active,
+a:active,
+a:focus,
+input:focus,
+input:active {
+  outline: none;
+  outline: 0;
 }
